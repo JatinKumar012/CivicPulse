@@ -12,6 +12,7 @@ voteRouter.post('/vote', async(req, res) => {
         if(!user || user.hasVoted){
             return res.status(400).json({message:'User has alreay voted or not found'});
         }
+        res.send("You can vote here..")
 
             const poll = await Poll.findById(pollId);
             if(!poll || optionIndex < 0 || optionIndex >= poll.options.length){

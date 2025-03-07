@@ -23,5 +23,10 @@ mongoose.connect('mongodb://localhost:27017/votingDB', {
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.log(err));
 
+app.get("/",(req, res) => {
+    res.send("All things are perfect");
+})
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
