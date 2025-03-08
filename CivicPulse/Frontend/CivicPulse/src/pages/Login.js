@@ -18,12 +18,54 @@ const Login = () =>{
             } else{
                 setError("Failed to send OTP");
             }
-        } catch(error){
+        } catch(err){
             setError("Error sending OTP. Check Aadhaar number.");
         }
     };
 
+    // Function to verify OTP
+    const verifyOtp = async () => {
+        try{
+            const response = await axios.post("https://localhost:5000/api/auth/verify-otp", {aadhaar, otp});
+            if(response.data.success){
+                localStorage.setItem("token", response.data.token);
+                navigate("/vote");
+            } else{
+                setError("Invalid OTP");
+            }
+        } catch(err){
+            setError("Error verifying OTP");
+        }
+    };
 
+    return (
+        <div>
+            <h2>Aadhaar Login</h2>
+            {error && <p style={{color:"red"}}>{error}</p>}
 
+            {!otpSent ? (
+                <div>
+                <input 
+                type="text"
+                placeholder="Enter Aadhaar Number"
+                value = {aadhaar}
+                onChange={(e) => setOtp(e.target.value)}
+                />
+                <button onClick={sendOtp}>Send OTP </button>
+                </div>
+            ): (
+                <div>
+                    <input
+                    type="text"
+                    placeholder="Enter OTP"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                    />
+                <button onClick={verifyOtp}>Verify OTP  </button>
+                </div>
+            )}
+        </div>
+    );
+};
 
-}
+export default Login;
