@@ -7,6 +7,11 @@ const voteRoutes = require('./routes/voteRoutes');
 
 const app = express();
 
+app.use(cors({
+    origin: "https://localhost:5173",
+    credentials: true
+}));
+
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());

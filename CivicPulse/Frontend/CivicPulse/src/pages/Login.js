@@ -12,7 +12,7 @@ const Login = () =>{
     // function to send OTP
     const sendOtp = async () => {
         try{
-            const response = await axios.post("http://localhost:500/api/auth/send-otp", {aadhaar});
+            const response = await axios.post("http://localhost:5000/api/auth/send-otp", {aadhaar});
             if(response.data.success){
                 setOtpSent(true);
             } else{
