@@ -4,6 +4,7 @@ const User = require('../models/User');
 const otpService = require('../utils/otpService');
 const aadhaarService = require('../utils/aadhaarService'); // Aadhaar API integration
 
+
 // Generate OTP using Aadhaar-linked phone number
 router.post('/send-otp', async (req, res) => {
     try {
