@@ -5,12 +5,10 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const voteRoutes = require('./routes/voteRoutes');
 
+// Voting Application 
+
 const app = express();
 
-app.use(cors({
-    origin: "https://localhost:5173",
-    credentials: true
-}));
 
 // Middleware
 app.use(cors());
